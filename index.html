@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>第1～34層頭目掉落查詢（已重新校對）</title>
+  <title>第1～40層頭目掉落查詢（已重新校對）</title>
   <style>
     :root {
       --bg: #0f1419; --card: #1a2332; --card-hover: #243044; --accent: #3b82f6;
@@ -61,7 +61,7 @@
 </head>
 <body>
   <header>
-    <h1>第 1～34 層頭目掉落查詢</h1>
+    <h1>第 1～40 層頭目掉落查詢</h1>
     <div class="search-row"><input type="search" id="search" placeholder="搜尋裝備名稱…" autocomplete="off" /></div>
     <div class="tabs" id="tabs">
       <button class="tab active" data-view="floors">依樓層</button>
@@ -259,7 +259,38 @@
         {type:"身體", name:"齒輪鎧", stats:"防禦+529 HP上限+3815 敏捷-21"},
         {type:"鞋子", name:"齒輪王的跑邪", stats:"攻擊+77 防禦+35 HP上限-520 敏捷+8"},
         {type:"飾物", name:"齒輪王的戒指", stats:"敏捷+18 爆擊率+7%"}
+      ]},
+      { floor:35, boss:"迷失森林之主 冰霜巨像", lv:"Lv46", drops:[
+        {type:"頭盔", name:"冰霜頭虧", stats:"防禦+123 HP上限+695"},
+        {type:"單手劍", name:"冰霜巨像的賤", stats:"攻擊+269 爆擊傷害+55.3% 攻速 100"},
+        {type:"細劍", name:"冰霜巨像的細賤", stats:"攻擊+120 爆擊率+22% 攻速 125"}
+      ]},
+      { floor:36, boss:"神殿守護者 阿努比死", lv:"Lv46", drops:[
+        {type:"斧頭", name:"胡郎巨腐", stats:"攻擊+425 攻速 72"},
+        {type:"太刀", name:"阿努比死的太倒", stats:"攻擊+283 爆擊率+25.2% 攻速 88"},
+        {type:"錘", name:"阿努比死的捶", stats:"攻擊+316 攻速 92"}
+      ]},
+      { floor:37, boss:"深海之主 克拉肯青", lv:"Lv48", drops:[
+        {type:"錘", name:"海王捶", stats:"攻擊+332 爆擊率+17.1% 攻速 80"},
+        {type:"副手", name:"克拉肯青的頓", stats:"防禦+149 HP上限+563 敏捷+45 迴避率+4% 格擋率+17.4% 攻速×0.9"},
+        {type:"身體", name:"克拉肯青的鎧假", stats:"防禦+573 HP上限+4129 敏捷-22"}
+      ]},
+      { floor:38, boss:"古堡之主 德古拉拿鐵", lv:"Lv49", drops:[
+        {type:"飾物", name:"血之芥", stats:"攻擊+96 防禦+13 HP上限-577 敏捷+15 爆擊率+5.8%"},
+        {type:"身體", name:"德古拉拿鐵的鎧假", stats:"防禦+587 HP上限+4235 敏捷-22"},
+        {type:"頭盔", name:"德古拉拿鐵的頭虧", stats:"攻擊+96 防禦+47"}
+      ]},
+      { floor:39, boss:"荊棘女王", lv:"Lv51", drops:[
+        {type:"身體", name:"荊棘鎧", stats:"防禦+337 HP上限+2548"},
+        {type:"鞋子", name:"荊棘女王的跑邪", stats:"攻擊+103 防禦+39 HP上限-588 敏捷+10"},
+        {type:"飾物", name:"荊棘女王的戒脂", stats:"敏捷+21 爆擊率+7.7%"}
+      ]},
+      { floor:40, boss:"魔王 撒但但", lv:"Lv51", drops:[
+        {type:"單手劍", name:"魔王之賤", stats:"攻擊+351 爆擊傷害+58.5% 攻速 100"},
+        {type:"細劍", name:"撒但但的細賤", stats:"攻擊+204 爆擊率+7.8% 攻速 125"},
+        {type:"太刀", name:"撒但但的太倒", stats:"攻擊+351 爆擊率+27% 攻速 88"}
       ]}
+
     ];
 
     const MAIN_CAT = {
