@@ -35,7 +35,7 @@
     .item-card:hover, .floor-card:hover { border-color: var(--accent); transform: translateY(-1px); }
     .item-name { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
     .type-badge { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 6px; color: #fff; }
-    .type-太刀, .type-單手劍, .type-細劍, .type-雙手劍, .type-雙手斧, .type-錘 { background: var(--weapon); }
+    .type-太刀, .type-單手劍, .type-細劍, .type-雙手劍, .type-斧頭, .type-錘 { background: var(--weapon); }
     .type-頭盔 { background: var(--head); }
     .type-身體 { background: var(--body); }
     .type-副手 { background: var(--offhand); }
@@ -75,19 +75,16 @@
     <div class="subtabs" id="weaponSubtabs">
       <button class="subtab active" data-subtype="all">全部武器</button>
       <button class="subtab" data-subtype="太刀">太刀</button>
-      <button class="subtab" data-subtype="單手劍">單手劍</button>
+      <button class="subtab" data-subtype="單手劍">單手劍（賤）</button>
       <button class="subtab" data-subtype="細劍">細劍（細賤）</button>
       <button class="subtab" data-subtype="雙手劍">雙手劍</button>
-      <button class="subtab" data-subtype="雙手斧">雙手斧（腐）</button>
+      <button class="subtab" data-subtype="斧頭">斧頭（腐）</button>
       <button class="subtab" data-subtype="錘">錘</button>
     </div>
   </header>
   <main>
     <div id="content"></div>
-    <div class="note">
-      已根據三張清晰圖片逐層重新校對（2026-10-23）。鎧假一律歸為「身體」；鎖/頓依原圖標籤歸類。<br>
-      點樓層可跳轉；點「複製」可複製名稱。手機友善。
-    </div>
+    
   </main>
   <div class="toast" id="toast">已複製</div>
   <script>
@@ -95,7 +92,7 @@
     const floorsData = [
       { floor:1, boss:"狗頭仁領主 伊兒煩哈", lv:"Lv3", drops:[
         {type:"太刀", name:"野太倒", stats:"攻擊+9 爆擊率+9.5% 攻速 88"},
-        {type:"雙手斧", name:"伊兒煩哈的巨腐", stats:"攻擊+11 爆擊率+6.3% 攻速 72"},
+        {type:"斧頭", name:"伊兒煩哈的巨腐", stats:"攻擊+11 爆擊率+6.3% 攻速 72"},
         {type:"錘", name:"伊兒煩哈的錘", stats:"攻擊+10 攻速 92"},
         {type:"身體", name:"午夜大姨", stats:"防禦+71 HP上限+506 敏捷+3"}
       ]},
@@ -105,9 +102,9 @@
         {type:"鞋子", name:"鴨絲特里歐斯的鎖", stats:"防禦+23 HP上限+75 敏捷-4 格擋率+10.4% 攻速×0.9"}
       ]},
       { floor:3, boss:"邪惡獵人 涅留斯", lv:"Lv6", drops:[
-        {type:"雙手斧", name:"古戰錘", stats:"攻擊+21 攻速 80"},
+        {type:"錘", name:"古戰錘", stats:"攻擊+21 攻速 80"},
         {type:"身體", name:"涅留斯的鎧假", stats:"防禦+58 HP上限+348 敏捷-4"},
-        {type:"頭盔", name:"涅留斯的頭飾", stats:"攻擊+4 防禦+5"}
+        {type:"頭盔", name:"涅留斯的頭虧", stats:"攻擊+4 防禦+5"}
       ]},
       { floor:4, boss:"海馬 威士雞", lv:"Lv6", drops:[
         {type:"細劍", name:"海馬細賤", stats:"攻擊+8 爆擊率+2.4% 攻速 137"},
@@ -122,51 +119,51 @@
       { floor:6, boss:"無屋頭方塊", lv:"Lv9", drops:[
         {type:"鞋子", name:"無屋鎖牌", stats:"防禦+66 HP上限+240 敏捷-6 格擋率+11.2% 攻速×0.9"},
         {type:"太刀", name:"無屋頭方塊的太倒", stats:"攻擊+22 爆擊率+11.7% 攻速 88"},
-        {type:"雙手劍", name:"無屋頭方塊的巨腐", stats:"攻擊+26 攻速 84"}
+        {type:"斧頭", name:"無屋頭方塊的巨腐", stats:"攻擊+26 攻速 84"}
       ]},
       { floor:7, boss:"豪賭巨腹 拉斯維申斯", lv:"Lv11", drops:[
-        {type:"太刀", name:"千金一笑", stats:"攻擊+26 爆擊率+12.2% 攻速 88"},
+        {type:"太刀", name:"千金一隻", stats:"攻擊+26 爆擊率+12.2% 攻速 88"},
         {type:"錘", name:"拉斯維申斯的錘", stats:"攻擊+29 攻速 92"},
-        {type:"鞋子", name:"拉斯維申斯的鎖", stats:"防禦+78 HP上限+287 敏捷-6 格擋率+11.4% 攻速×0.9"}
+        {type:"副手", name:"拉斯維申斯的頓", stats:"防禦+78 HP上限+287 敏捷-6 格擋率+11.4% 攻速×0.9"}
       ]},
       { floor:8, boss:"叢林獸王 金剛郎牙", lv:"Lv11", drops:[
         {type:"鞋子", name:"叢林跑邪", stats:"防禦+18 敏捷+18 迴避率+2.2%"},
         {type:"身體", name:"金剛郎牙的鎧假", stats:"防禦+136 HP上限+898 敏捷-7"},
-        {type:"頭盔", name:"金剛郎牙的頭飾", stats:"攻擊+9 防禦+11"}
+        {type:"頭盔", name:"金剛郎牙的頭虧", stats:"攻擊+9 防禦+11"}
       ]},
       { floor:9, boss:"黑暗驚雲獎軍", lv:"Lv13", drops:[
-        {type:"雙手劍", name:"獎軍之腿", stats:"攻擊+33 爆擊傷害+38.4% 攻速 100"},
+        {type:"單手劍", name:"獎軍之剪", stats:"攻擊+33 爆擊傷害+38.4% 攻速 100"},
         {type:"鞋子", name:"黑暗驚雲獎軍的跑邪", stats:"攻擊+10 防禦+10 HP上限-137 敏捷+3"},
         {type:"飾物", name:"黑暗驚雲獎軍的戒指", stats:"敏捷+7 爆擊率+3.8%"}
       ]},
       { floor:10, boss:"武士領主 咖喱雞", lv:"Lv14", drops:[
         {type:"太刀", name:"無事刀", stats:"攻擊+47 爆擊率+5.9% 攻速 88"},
         {type:"雙手劍", name:"咖喱雞的腿", stats:"攻擊+36 爆擊傷害+39% 攻速 100"},
-        {type:"細劍", name:"咖喱雞的細賤", stats:"攻擊+16 爆擊率+12% 攻速 125"}
+        {type:"單手劍", name:"咖喱雞的賤", stats:"攻擊+16 爆擊率+12% 攻速 125"}
       ]},
       { floor:11, boss:"雙刃嘴郎", lv:"Lv16", drops:[
-        {type:"雙手劍", name:"雙刃嘴刀", stats:"攻擊+54 防禦+4 HP上限-169 爆擊傷害+30.5% 攻速 95"},
+        {type:"單手劍", name:"雙刃嘴刀", stats:"攻擊+54 防禦+4 HP上限-169 爆擊傷害+30.5% 攻速 95"},
         {type:"太刀", name:"雙刃嘴郎的太倒", stats:"攻擊+42 爆擊率+14% 攻速 88"},
         {type:"雙手劍", name:"雙刃嘴郎的巨腐", stats:"攻擊+48 攻速 84"}
       ]},
       { floor:12, boss:"沼澤之主 蛤蟆仙人", lv:"Lv16", drops:[
-        {type:"飾物", name:"仙人豆芽", stats:"防禦+44 HP上限+239"},
+        {type:"頭盔", name:"仙人都笠", stats:"防禦+44 HP上限+239"},
         {type:"錘", name:"蛤蟆仙人的錘", stats:"攻擊+52 攻速 92"},
-        {type:"鞋子", name:"蛤蟆仙人的鎖", stats:"防禦+128 HP上限+490 敏捷-9 格擋率+12.4% 攻速×0.9"}
+        {type:"副手", name:"蛤蟆仙人的頓", stats:"防禦+128 HP上限+490 敏捷-9 格擋率+12.4% 攻速×0.9"}
       ]},
       { floor:13, boss:"泥沼巨蜥 餓霸", lv:"Lv18", drops:[
         {type:"身體", name:"餓皮甲", stats:"防禦+212 HP上限+1456 敏捷-10"},
-        {type:"頭盔", name:"餓霸的頭飾", stats:"防禦+101 HP上限+530 敏捷-10"},
+        {type:"頭盔", name:"餓霸的頭虧", stats:"防禦+101 HP上限+530 敏捷-10"},
         {type:"鞋子", name:"餓霸的跑邪", stats:"攻擊+16 防禦+14 HP上限-199 敏捷+4"}
       ]},
       { floor:14, boss:"礦坑之王 鑽石大鑽", lv:"Lv19", drops:[
-        {type:"雙手斧", name:"鑽頭嘴", stats:"攻擊+95 防禦+5 HP上限-214 攻速 67"},
+        {type:"斧頭", name:"鑽頭腐", stats:"攻擊+95 防禦+5 HP上限-214 攻速 67"},
         {type:"鞋子", name:"鑽石大鑽的跑邪", stats:"攻擊+17 防禦+15 HP上限-214 敏捷+4"},
         {type:"飾物", name:"鑽石大鑽的戒指", stats:"敏捷+9 爆擊率+4.4%"}
       ]},
       { floor:15, boss:"熔爐巨仁 鍋爐爺", lv:"Lv21", drops:[
-        {type:"雙手斧", name:"鍋爐錘", stats:"攻擊+92 攻速 80"},
-        {type:"雙手劍", name:"鍋爐爺的腿", stats:"攻擊+64 爆擊傷害+42.3% 攻速 100"},
+        {type:"錘", name:"鍋爐錘", stats:"攻擊+92 攻速 80"},
+        {type:"單手劍", name:"鍋爐爺的賤", stats:"攻擊+64 爆擊傷害+42.3% 攻速 100"},
         {type:"細劍", name:"鍋爐爺的細賤", stats:"攻擊+28 爆擊率+14% 攻速 125"}
       ]},
       { floor:16, boss:"沙漠暴君 沙皇", lv:"Lv21", drops:[
@@ -175,92 +172,92 @@
         {type:"雙手劍", name:"沙皇的巨腐", stats:"攻擊+80 攻速 84"}
       ]},
       { floor:17, boss:"巨龍皇帝", lv:"Lv23", drops:[
-        {type:"雙手斧", name:"龍尾錘", stats:"攻擊+125 防禦+6 HP上限-260 攻速 75"},
-        {type:"鞋子", name:"巨龍皇帝的鎖假", stats:"防禦+71 HP上限+260 敏捷+24 迴避率+2.8% 格擋率+13.4% 攻速×0.9"},
-        {type:"頭盔", name:"巨龍皇帝的頭盔", stats:"防禦+271 HP上限+1907 敏捷-12"}
+        {type:"錘", name:"龍尾錘", stats:"攻擊+125 防禦+6 HP上限-260 攻速 75"},
+        {type:"副手", name:"巨龍皇帝的頓", stats:"防禦+71 HP上限+260 敏捷+24 迴避率+2.8% 格擋率+13.4% 攻速×0.9"},
+        {type:"身體", name:"巨龍皇帝的鎧假", stats:"防禦+271 HP上限+1907 敏捷-12"}
       ]},
       { floor:18, boss:"雪原霸主 冰淇淋", lv:"Lv24", drops:[
-        {type:"雙手劍", name:"冰淇淋劍", stats:"攻擊+63 爆擊率+11.4% 爆擊傷害+34% 攻速 100"},
-        {type:"頭盔", name:"冰淇淋的假", stats:"防禦+288 HP上限+2020 敏捷-12"},
-        {type:"飾物", name:"冰淇淋的頭飾", stats:"攻擊+25 防禦+23"}
+        {type:"單手劍", name:"冰淇淋劍", stats:"攻擊+63 爆擊率+11.4% 爆擊傷害+34% 攻速 100"},
+        {type:"身體", name:"冰淇淋的鎧假", stats:"防禦+288 HP上限+2020 敏捷-12"},
+        {type:"飾物", name:"冰淇淋的頭虧", stats:"攻擊+25 防禦+23"}
       ]},
-      { floor:19, boss:"冰河巨象 長毛象叔叔", lv:"Lv26", drops:[
-        {type:"雙手斧", name:"長毛象叔叔", stats:"攻擊+137 攻速 72"},
-        {type:"鞋子", name:"長毛象叔叔的跑邪", stats:"攻擊+28 防禦+20 HP上限-292 敏捷+5"},
-        {type:"飾物", name:"長毛象叔叔的戒指", stats:"敏捷+12 爆擊率+5.1%"}
+      { floor:19, boss:"冰河巨象 長毛象拔叔", lv:"Lv26", drops:[
+        {type:"斧頭", name:"長毛象拔腐", stats:"攻擊+137 攻速 72"},
+        {type:"鞋子", name:"長毛象拔叔的跑邪", stats:"攻擊+28 防禦+20 HP上限-292 敏捷+5"},
+        {type:"飾物", name:"長毛象拔叔的戒指", stats:"敏捷+12 爆擊率+5.1%"}
       ]},
-      { floor:20, boss:"熔岩巨獸 火山曇花", lv:"Lv26", drops:[
-        {type:"身體", name:"熔岩頭盔", stats:"防禦+181 HP上限+1330"},
-        {type:"雙手劍", name:"火山曇花的腿", stats:"攻擊+98 爆擊傷害+45.5% 攻速 100"},
-        {type:"細劍", name:"火山曇花的細賤", stats:"攻擊+44 爆擊率+16% 攻速 125"}
+      { floor:20, boss:"熔岩巨獸 火山爆花", lv:"Lv26", drops:[
+        {type:"身體", name:"熔岩鱗甲", stats:"防禦+181 HP上限+1330"},
+        {type:"單手劍", name:"火山爆花的賤", stats:"攻擊+98 爆擊傷害+45.5% 攻速 100"},
+        {type:"細劍", name:"火山爆花的細賤", stats:"攻擊+44 爆擊率+16% 攻速 125"}
       ]},
       { floor:21, boss:"炎之魔神 衣服利特", lv:"Lv28", drops:[
-        {type:"太刀", name:"魔刀", stats:"攻擊+162 防禦+7 HP上限-322 爆擊率+6.2% 攻速 83"},
+        {type:"太刀", name:"鹽刀", stats:"攻擊+162 防禦+7 HP上限-322 爆擊率+6.2% 攻速 83"},
         {type:"雙手劍", name:"衣服利特的巨腐", stats:"攻擊+122 爆擊率+12.3% 攻速 72"},
         {type:"錘", name:"衣服利特的錘", stats:"攻擊+117 攻速 92"}
       ]},
       { floor:22, boss:"湖底巨芒", lv:"Lv29", drops:[
-        {type:"飾物", name:"愛之主的精芥", stats:"敏捷+40 爆擊率+4.2% 迴避率+3.1%"},
+        {type:"飾物", name:"壺之主的鱗芥", stats:"敏捷+40 爆擊率+4.2% 迴避率+3.1%"},
         {type:"錘", name:"湖底巨芒的錘", stats:"攻擊+126 攻速 92"},
-        {type:"鞋子", name:"湖底巨芒的鎖", stats:"防禦+228 HP上限+898 敏捷-15 格擋率+14.4% 攻速×0.9"}
+        {type:"副手", name:"湖底巨芒的頓", stats:"防禦+228 HP上限+898 敏捷-15 格擋率+14.4% 攻速×0.9"}
       ]},
       { floor:23, boss:"惡靈獎軍 骨頭湯", lv:"Lv31", drops:[
-        {type:"鞋子", name:"骨頭湯鎖", stats:"防禦+124 HP上限+459 格擋率+19% 攻速×0.9"},
+        {type:"副手", name:"骨頭湯頓", stats:"防禦+124 HP上限+459 格擋率+19% 攻速×0.9"},
         {type:"身體", name:"骨頭湯的鎧假", stats:"防禦+366 HP上限+2589 敏捷-15"},
-        {type:"頭盔", name:"骨頭湯的頭飾", stats:"攻擊+38 防禦+29"}
+        {type:"頭盔", name:"骨頭湯的頭虧", stats:"攻擊+38 防禦+29"}
       ]},
-      { floor:24, boss:"死靈法濕 屍鼠", lv:"Lv31", drops:[
-        {type:"細劍", name:"屍鼠細賤", stats:"攻擊+59 爆擊率+17.6% 攻速 125"},
-        {type:"鞋子", name:"屍鼠的跑邪", stats:"攻擊+41 防禦+25 HP上限-368 敏捷+6"},
-        {type:"飾物", name:"屍鼠的戒指", stats:"敏捷+13 爆擊率+5.7%"}
+      { floor:24, boss:"死靈法濕 屍蘭", lv:"Lv31", drops:[
+        {type:"細劍", name:"屍蘭細賤", stats:"攻擊+59 爆擊率+17.6% 攻速 125"},
+        {type:"鞋子", name:"屍蘭的跑邪", stats:"攻擊+41 防禦+25 HP上限-368 敏捷+6"},
+        {type:"飾物", name:"屍蘭的戒指", stats:"敏捷+13 爆擊率+5.7%"}
       ]},
       { floor:25, boss:"雙頭巨仁", lv:"Lv33", drops:[
-        {type:"雙手斧", name:"雙頭巨腐", stats:"攻擊+240 防禦+9 HP上限-383 攻速 67"},
-        {type:"雙手劍", name:"雙頭巨仁的腿", stats:"攻擊+142 爆擊傷害+48.8% 攻速 100"},
+        {type:"斧頭", name:"雙頭巨腐", stats:"攻擊+240 防禦+9 HP上限-383 攻速 67"},
+        {type:"單手劍", name:"雙頭巨仁的賤", stats:"攻擊+142 爆擊傷害+48.8% 攻速 100"},
         {type:"細劍", name:"雙頭巨仁的細賤", stats:"攻擊+63 爆擊率+18% 攻速 125"}
       ]},
       { floor:26, boss:"雷雲巨鳥 雷公雞", lv:"Lv34", drops:[
-        {type:"鞋子", name:"雷公雞鞋", stats:"防禦+53 敏捷+40 迴避率+3.3%"},
+        {type:"鞋子", name:"雷公雞靴", stats:"防禦+53 敏捷+40 迴避率+3.3%"},
         {type:"太刀", name:"雷公雞的太倒", stats:"攻擊+151 爆擊率+20.7% 攻速 88"},
-        {type:"雙手劍", name:"雷公雞的巨腐", stats:"攻擊+174 攻速 84"}
+        {type:"斧頭", name:"雷公雞的巨腐", stats:"攻擊+174 攻速 84"}
       ]},
-      { floor:27, boss:"死角巨人", lv:"Lv36", drops:[
+      { floor:27, boss:"死背巨仁", lv:"Lv36", drops:[
         {type:"飾物", name:"黑毛的護身符", stats:"敏捷+11 爆擊率+18.8%"},
-        {type:"錘", name:"死角巨人的錘", stats:"攻擊+184 攻速 92"},
-        {type:"鞋子", name:"死角巨人的鎖", stats:"防禦+278 HP上限+1106 敏捷-16 格擋率+15.4% 攻速×0.9"}
+        {type:"錘", name:"死背巨仁的捶", stats:"攻擊+184 攻速 92"},
+        {type:"副手", name:"死背巨仁的頓", stats:"防禦+278 HP上限+1106 敏捷-16 格擋率+15.4% 攻速×0.9"}
       ]},
       { floor:28, boss:"瘴氣之母 毒蘑菇婆婆", lv:"Lv36", drops:[
         {type:"頭盔", name:"蘑菇帽", stats:"防禦+100 HP上限+559"},
         {type:"身體", name:"毒蘑菇婆婆的鎧假", stats:"防禦+442 HP上限+3153 敏捷-18"},
         {type:"鞋子", name:"毒蘑菇婆婆的跑邪", stats:"攻擊+54 防禦+29 HP上限-430 敏捷+7"}
       ]},
-      { floor:29, boss:"九頭舌 海絲拉", lv:"Lv38", drops:[
-        {type:"鞋子", name:"九頭舌鎖鏈", stats:"防禦+297 HP上限+1187 敏捷-18 格擋率+15.8% 攻速×0.9"},
-        {type:"鞋子", name:"海絲拉的跑邪", stats:"攻擊+57 防禦+30 HP上限-445 敏捷+7"},
-        {type:"飾物", name:"海絲拉的戒指", stats:"敏捷+16 爆擊率+6.4%"}
+      { floor:29, boss:"九頭舌 海綽拉", lv:"Lv38", drops:[
+        {type:"副手", name:"九頭舌的鱗盾", stats:"防禦+297 HP上限+1187 敏捷-18 格擋率+15.8% 攻速×0.9"},
+        {type:"鞋子", name:"海綽拉的跑邪", stats:"攻擊+57 防禦+30 HP上限-445 敏捷+7"},
+        {type:"飾物", name:"海綽拉的戒脂", stats:"敏捷+16 爆擊率+6.4%"}
       ]},
-      { floor:30, boss:"龍谷之主 巨響王", lv:"Lv39", drops:[
-        {type:"身體", name:"雙王環", stats:"防禦+267 HP上限+1996"},
-        {type:"雙手劍", name:"巨響王的腿", stats:"攻擊+196 爆擊傷害+52% 攻速 100"},
-        {type:"細劍", name:"巨響王的細賤", stats:"攻擊+88 爆擊率+20% 攻速 125"}
+      { floor:30, boss:"龍谷之主 巨聾王", lv:"Lv39", drops:[
+        {type:"身體", name:"聾王鎧", stats:"防禦+267 HP上限+1996"},
+        {type:"單手劍", name:"巨聾王的賤", stats:"攻擊+196 爆擊傷害+52% 攻速 100"},
+        {type:"細劍", name:"巨聾王的細賤", stats:"攻擊+88 爆擊率+20% 攻速 125"}
       ]},
-      { floor:31, boss:"迷霧大湖", lv:"Lv41", drops:[
-        {type:"鞋子", name:"飛行鞋", stats:"防禦+64 敏捷+47 迴避率+3.7%"},
-        {type:"太刀", name:"迷霧大湖的太倒", stats:"攻擊+213 爆擊率+22.9% 攻速 88"},
-        {type:"雙手劍", name:"迷霧大湖的巨腐", stats:"攻擊+246 攻速 84"}
+      { floor:31, boss:"迷霧大濕", lv:"Lv41", drops:[
+        {type:"鞋子", name:"霧行靴", stats:"防禦+64 敏捷+47 迴避率+3.7%"},
+        {type:"太刀", name:"迷霧大濕的太倒", stats:"攻擊+213 爆擊率+22.9% 攻速 88"},
+        {type:"雙手劍", name:"迷霧大濕的巨腐", stats:"攻擊+246 攻速 84"}
       ]},
       { floor:32, boss:"水晶之心 晶晶大王", lv:"Lv41", drops:[
         {type:"飾物", name:"晶心戒指", stats:"敏捷+13 爆擊率+20.8%"},
         {type:"錘", name:"晶晶大王的錘", stats:"攻擊+251 攻速 92"},
-        {type:"鞋子", name:"晶晶大王的鎖", stats:"防禦+327 HP上限+1311 敏捷-19 格擋率+16.4% 攻速×0.9"}
+        {type:"副手", name:"晶晶大王的頓", stats:"防禦+327 HP上限+1311 敏捷-19 格擋率+16.4% 攻速×0.9"}
       ]},
       { floor:33, boss:"風神 疾風大大", lv:"Lv43", drops:[
         {type:"細劍", name:"疾風細賤", stats:"攻擊+106 爆擊率+5.3% 攻速 137"},
         {type:"身體", name:"疾風大大的鎧假", stats:"防禦+515 HP上限+3709 敏捷-21"},
-        {type:"頭盔", name:"疾風大大的頭飾", stats:"攻擊+73 防禦+41"}
+        {type:"頭盔", name:"疾風大大的頭虧", stats:"攻擊+73 防禦+41"}
       ]},
       { floor:34, boss:"機械巨神 齒輪王", lv:"Lv44", drops:[
-        {type:"頭盔", name:"齒輪頭盔", stats:"防禦+529 HP上限+3815 敏捷-21"},
+        {type:"身體", name:"齒輪鎧", stats:"防禦+529 HP上限+3815 敏捷-21"},
         {type:"鞋子", name:"齒輪王的跑邪", stats:"攻擊+77 防禦+35 HP上限-520 敏捷+8"},
         {type:"飾物", name:"齒輪王的戒指", stats:"敏捷+18 爆擊率+7%"}
       ]},
@@ -270,19 +267,19 @@
         {type:"細劍", name:"冰霜巨像的細賤", stats:"攻擊+120 爆擊率+22% 攻速 125"}
       ]},
       { floor:36, boss:"神殿守護者 阿努比死", lv:"Lv46", drops:[
-        {type:"雙手劍", name:"胡郎巨腐", stats:"攻擊+425 攻速 72"},
+        {type:"斧頭", name:"胡郎巨腐", stats:"攻擊+425 攻速 72"},
         {type:"太刀", name:"阿努比死的太倒", stats:"攻擊+283 爆擊率+25.2% 攻速 88"},
         {type:"錘", name:"阿努比死的錘", stats:"攻擊+316 攻速 92"}
       ]},
       { floor:37, boss:"深海之主 克拉肯青", lv:"Lv48", drops:[
-        {type:"雙手斧", name:"海王錘", stats:"攻擊+332 爆擊率+17.1% 攻速 80"},
+        {type:"錘", name:"海王錘", stats:"攻擊+332 爆擊率+17.1% 攻速 80"},
         {type:"鞋子", name:"克拉肯青的鎖", stats:"防禦+149 HP上限+563 敏捷+45 迴避率+4% 格擋率+17.4% 攻速×0.9"},
         {type:"身體", name:"克拉肯青的鎧假", stats:"防禦+573 HP上限+4129 敏捷-22"}
       ]},
       { floor:38, boss:"古堡之主 德古拉拿鐵", lv:"Lv49", drops:[
         {type:"飾物", name:"血之芥", stats:"攻擊+96 防禦+13 HP上限-577 敏捷+15 爆擊率+5.8%"},
         {type:"身體", name:"德古拉拿鐵的鎧假", stats:"防禦+587 HP上限+4235 敏捷-22"},
-        {type:"頭盔", name:"德古拉拿鐵的頭飾", stats:"攻擊+96 防禦+47"}
+        {type:"頭盔", name:"德古拉拿鐵的頭虧", stats:"攻擊+96 防禦+47"}
       ]},
       { floor:39, boss:"荊棘女王", lv:"Lv51", drops:[
         {type:"頭盔", name:"荊棘頭盔", stats:"防禦+337 HP上限+2548"},
@@ -300,7 +297,7 @@
     ];
 
     const MAIN_CAT = {
-      "太刀":"武器","單手劍":"武器","細劍":"武器","雙手劍":"武器","雙手斧":"武器","錘":"武器",
+      "太刀":"武器","單手劍":"武器","細劍":"武器","雙手劍":"武器","斧頭":"武器","錘":"武器",
       "頭盔":"頭盔","身體":"身體","副手":"副手","鞋子":"鞋子","飾物":"飾物"
     };
 
