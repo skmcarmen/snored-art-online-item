@@ -277,7 +277,11 @@
           map.get(d.name).floors.push({ floor:f.floor, boss:f.boss, lv:f.lv });
         });
       });
-      return Array.from(map.values()).sort((a,b) => a.name.localeCompare(b.name,'zh-Hant'));
+      // 每個裝備的樓層由小到大排序，裝備本身也依最低樓層排序
+      const items = Array.from(map.values());
+      items.forEach(item => item.floors.sort((a,b) => a.floor - b.floor));
+      items.sort((a,b) => a.floors[0].floor - b.floors[0].floor || a.name.localeCompare(b.name,'zh-Hant'));
+      return items;
     }
     const allItems = buildItemIndex();
 
