@@ -35,7 +35,7 @@
     .item-card:hover, .floor-card:hover { border-color: var(--accent); transform: translateY(-1px); }
     .item-name { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
     .type-badge { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 6px; color: #fff; }
-    .type-太刀, .type-單手劍, .type-細劍, .type-雙手劍, .type-斧頭, .type-錘 { background: var(--weapon); }
+    .type-太刀, .type-單手劍, .type-細劍, .type-斧頭, .type-錘 { background: var(--weapon); }
     .type-頭盔 { background: var(--head); }
     .type-身體 { background: var(--body); }
     .type-副手 { background: var(--offhand); }
@@ -77,8 +77,7 @@
       <button class="subtab" data-subtype="太刀">太刀</button>
       <button class="subtab" data-subtype="單手劍">單手劍（賤）</button>
       <button class="subtab" data-subtype="細劍">細劍（細賤）</button>
-      <button class="subtab" data-subtype="雙手劍">雙手劍</button>
-      <button class="subtab" data-subtype="斧頭">斧頭（腐）</button>
+            <button class="subtab" data-subtype="斧頭">斧頭（腐）</button>
       <button class="subtab" data-subtype="錘">錘</button>
     </div>
   </header>
@@ -113,7 +112,7 @@
       ]},
       { floor:5, boss:"空心菜巨像 福斯哭斯", lv:"Lv8", drops:[
         {type:"身體", name:"巨像之環", stats:"防禦+87 HP上限+554 敏捷-6"},
-        {type:"雙手劍", name:"福斯哭斯的腿", stats:"攻擊+20 爆擊傷害+35.8% 攻速 100"},
+        {type:"鞋子", name:"福斯哭斯的腿", stats:"攻擊+20 爆擊傷害+35.8% 攻速 100"},
         {type:"細劍", name:"福斯哭斯的細賤", stats:"攻擊+9 爆擊率+10% 攻速 125"}
       ]},
       { floor:6, boss:"無屋頭方塊", lv:"Lv9", drops:[
@@ -138,13 +137,13 @@
       ]},
       { floor:10, boss:"武士領主 咖喱雞", lv:"Lv14", drops:[
         {type:"太刀", name:"無事刀", stats:"攻擊+47 爆擊率+5.9% 攻速 88"},
-        {type:"雙手劍", name:"咖喱雞的腿", stats:"攻擊+36 爆擊傷害+39% 攻速 100"},
+        {type:"鞋子", name:"咖喱雞的腿", stats:"攻擊+36 爆擊傷害+39% 攻速 100"},
         {type:"單手劍", name:"咖喱雞的賤", stats:"攻擊+16 爆擊率+12% 攻速 125"}
       ]},
       { floor:11, boss:"雙刃嘴郎", lv:"Lv16", drops:[
         {type:"單手劍", name:"雙刃嘴刀", stats:"攻擊+54 防禦+4 HP上限-169 爆擊傷害+30.5% 攻速 95"},
         {type:"太刀", name:"雙刃嘴郎的太倒", stats:"攻擊+42 爆擊率+14% 攻速 88"},
-        {type:"雙手劍", name:"雙刃嘴郎的巨腐", stats:"攻擊+48 攻速 84"}
+        {type:"斧頭", name:"雙刃嘴郎的巨腐", stats:"攻擊+48 攻速 84"}
       ]},
       { floor:12, boss:"沼澤之主 蛤蟆仙人", lv:"Lv16", drops:[
         {type:"頭盔", name:"仙人都笠", stats:"防禦+44 HP上限+239"},
@@ -169,7 +168,7 @@
       { floor:16, boss:"沙漠暴君 沙皇", lv:"Lv21", drops:[
         {type:"細劍", name:"沙皇細賤", stats:"攻擊+40 爆擊率+4.7% 攻速 125"},
         {type:"太刀", name:"沙皇的太倒", stats:"攻擊+69 爆擊率+16.2% 攻速 88"},
-        {type:"雙手劍", name:"沙皇的巨腐", stats:"攻擊+80 攻速 84"}
+        {type:"斧頭", name:"沙皇的巨腐", stats:"攻擊+80 攻速 84"}
       ]},
       { floor:17, boss:"巨龍皇帝", lv:"Lv23", drops:[
         {type:"錘", name:"龍尾錘", stats:"攻擊+125 防禦+6 HP上限-260 攻速 75"},
@@ -193,7 +192,7 @@
       ]},
       { floor:21, boss:"炎之魔神 衣服利特", lv:"Lv28", drops:[
         {type:"太刀", name:"鹽刀", stats:"攻擊+162 防禦+7 HP上限-322 爆擊率+6.2% 攻速 83"},
-        {type:"雙手劍", name:"衣服利特的巨腐", stats:"攻擊+122 爆擊率+12.3% 攻速 72"},
+        {type:"斧頭", name:"衣服利特的巨腐", stats:"攻擊+122 爆擊率+12.3% 攻速 72"},
         {type:"錘", name:"衣服利特的錘", stats:"攻擊+117 攻速 92"}
       ]},
       { floor:22, boss:"湖底巨芒", lv:"Lv29", drops:[
@@ -244,7 +243,7 @@
       { floor:31, boss:"迷霧大濕", lv:"Lv41", drops:[
         {type:"鞋子", name:"霧行靴", stats:"防禦+64 敏捷+47 迴避率+3.7%"},
         {type:"太刀", name:"迷霧大濕的太倒", stats:"攻擊+213 爆擊率+22.9% 攻速 88"},
-        {type:"雙手劍", name:"迷霧大濕的巨腐", stats:"攻擊+246 攻速 84"}
+        {type:"斧頭", name:"迷霧大濕的巨腐", stats:"攻擊+246 攻速 84"}
       ]},
       { floor:32, boss:"水晶之心 晶晶大王", lv:"Lv41", drops:[
         {type:"飾物", name:"晶心戒指", stats:"敏捷+13 爆擊率+20.8%"},
@@ -264,7 +263,7 @@
     ];
 
     const MAIN_CAT = {
-      "太刀":"武器","單手劍":"武器","細劍":"武器","雙手劍":"武器","斧頭":"武器","錘":"武器",
+      "太刀":"武器","單手劍":"武器","細劍":"武器","斧頭":"武器","錘":"武器",
       "頭盔":"頭盔","身體":"身體","副手":"副手","鞋子":"鞋子","飾物":"飾物"
     };
 
